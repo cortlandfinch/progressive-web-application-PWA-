@@ -26,6 +26,8 @@ module.exports = () => {
         name: 'JATE',
         short_name: 'Text Editor',
         description: 'Start using this text editor!',
+        start_url: '/',
+        publicPath: '/',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
