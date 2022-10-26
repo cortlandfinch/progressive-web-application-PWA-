@@ -35,6 +35,14 @@ export const getDb = async () => {
   const jateDB = await openDB("jate", 1);
   // create a new transaction and which database is used and the data privileges
   const tx = jateDB.transaction("jate", "readonly");
+  // open up the object store
+  const store = tx.objectStore("jate");
+  // use get method for the store
+  const request = store.getAll();
+  // get confirmation for the request
+  const result = await request;
+  console.log(result);
+  return result;
 };
 
 initdb();
