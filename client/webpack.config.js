@@ -9,10 +9,7 @@ const { InjectManifest } = require('workbox-webpack-plugin');
 module.exports = () => {
   return {
     mode: 'development',
-    entry: {
-      main: './src/js/index.js',
-      install: './src/js/install.js'
-    },
+    entry: './src/js/index.js',
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist'),
@@ -51,7 +48,7 @@ module.exports = () => {
       rules: [
         {
           test: /\.css$/i,
-          user: ['style-loader', 'css-loader']
+          use: ['style-loader', 'css-loader']
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
