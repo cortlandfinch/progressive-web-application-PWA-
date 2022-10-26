@@ -18,9 +18,33 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'Webpack Plugin',
+      }),
+      new WebpackPwaManifest({
+        name: 'JATE',
+        short_name: 'Text Editor',
+        description: 'Start using this text editor!',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 196, 256, 384, 512],
+            destination: path.join('assets', 'icons')
+          },
+          {
+            src: path.resolve('src/images/logo.png'),
+            size: '1024x1024',
+            destination: path.join('assets', 'icons'),
+            purpose: 'maskable'
+          }
+        ],
+      }),
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'service-worker.js'
+      })
     ],
-
     module: {
       rules: [
         
